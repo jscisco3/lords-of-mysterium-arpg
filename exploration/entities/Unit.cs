@@ -31,6 +31,11 @@ public partial class Unit : CharacterBody2D
             _target = GetGlobalMousePosition();
             logger.info("Moving to target...");
         }
+        if (@event.IsActionPressed("move_up"))
+        {
+            var distance = _target != null ? Position.DistanceTo(_target.Value) : -1000000.0f;
+            logger.info("Distance to target: " + distance);
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -41,5 +46,13 @@ public partial class Unit : CharacterBody2D
         }
         Velocity = Velocity.Normalized() *  Speed;
         MoveAndCollide(Velocity * (float) delta);
+        if (_target != null)
+        {
+            if (Position.DistanceTo(_target.Value) < 1.2f)
+            {
+                _target = null;
+                Velocity = Vector2.Zero;
+            }   
+        }
     }
 }

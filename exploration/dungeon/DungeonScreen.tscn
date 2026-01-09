@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0qtqk5cbi5bn"]
+
+[ext_resource type="Script" uid="uid://dbswbim0w1n23" path="res://exploration/dungeon/DungeonScreen.cs" id="1_cgp5y"]
+[ext_resource type="PackedScene" uid="uid://cjskrsppipwnn" path="res://exploration/entities/Unit.tscn" id="2_12lvw"]
+
+[node name="DungeonScreen" type="Node2D"]
+script = ExtResource("1_cgp5y")
+
+[node name="Unit" parent="." instance=ExtResource("2_12lvw")]
+position = Vector2(62, 58)
+Speed = 100.0
